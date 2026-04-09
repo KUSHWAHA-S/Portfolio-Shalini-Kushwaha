@@ -80,11 +80,10 @@ export function ContactSection() {
               }}
               whileHover={{ 
                 scale: 1.3, 
-                color: "#4ecdc4",
                 y: -5,
                 transition: { duration: 0.15 }
               }}
-              className="inline-block cursor-default"
+              className="inline-block cursor-default transition-colors hover:text-primary"
               style={{ display: char === " " ? "inline" : "inline-block" }}
             >
               {char === " " ? "\u00A0" : char}

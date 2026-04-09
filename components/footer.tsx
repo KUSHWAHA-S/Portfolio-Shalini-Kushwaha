@@ -10,7 +10,6 @@ export function Footer() {
           <motion.a
             href="mailto:k29120shalini@gmail.com"
             className="text-muted-foreground hover:text-primary transition-colors text-sm font-mono"
-            whileHover={{ color: "var(--primary)" }}
           >
             <p>Designed & Built by Shalini Kushwaha</p>
           </motion.a>

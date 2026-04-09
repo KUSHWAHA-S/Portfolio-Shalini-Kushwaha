@@ -399,10 +399,9 @@ export function HeroSection() {
                   transition={{ delay: 0.4 + i * 0.05, type: "spring" }}
                   whileHover={{
                     scale: 1.2,
-                    color: "#4ecdc4",
                     rotate: Math.random() > 0.5 ? 5 : -5,
                   }}
-                  className="inline-block cursor-default"
+                  className="inline-block cursor-default transition-colors hover:text-primary"
                 >
                   {char === " " ? "\u00A0" : char}
                 </motion.span>

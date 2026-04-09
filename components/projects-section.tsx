@@ -143,11 +143,7 @@ function FeaturedProject({
           >
             <div className="w-full h-full bg-linear-to-br from-primary/30 to-secondary/30" />
           </motion.div>
-          <motion.div 
-            className="absolute inset-0 bg-primary/10"
-            whileHover={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          />
+          <div className="absolute inset-0 bg-primary/10 transition-opacity duration-300 group-hover:opacity-0" />
         </div>
       </motion.div>
       
@@ -200,10 +196,11 @@ function FeaturedProject({
           {project.technologies.map((tech, i) => (
             <motion.li 
               key={tech}
+              className="transition-colors hover:text-primary"
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.25 + 0.75 + i * 0.05 }}
-              whileHover={{ y: -2, color: "var(--primary)" }}
+              whileHover={{ y: -2 }}
             >
               {tech}
             </motion.li>
@@ -347,7 +344,8 @@ function OtherProject({
         {project.technologies.map((tech) => (
           <motion.li 
             key={tech}
-            whileHover={{ scale: 1.1, color: "var(--primary)" }}
+            className="transition-colors hover:text-primary"
+            whileHover={{ scale: 1.1 }}
           >
             {tech}
           </motion.li>

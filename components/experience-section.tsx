@@ -53,16 +53,14 @@ export function ExperienceSection() {
         <motion.h2 
           initial={{ opacity: 0, x: -150, scale: 0.8 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
-          exit={{ opacity: 0, x: 150, scale: 0.8 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
           className="flex items-center gap-4 text-2xl md:text-3xl font-bold mb-12 text-foreground"
         >
           <motion.span 
             initial={{ scale: 0, y: -50 }}
             whileInView={{ scale: 1, y: 0 }}
-            exit={{ scale: 0, y: 50 }}
-            viewport={{ once: false }}
+            viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.5, delay: 0.3, type: "spring", bounce: 0.5 }}
             className="text-primary font-mono text-lg md:text-xl"
           >
@@ -72,8 +70,7 @@ export function ExperienceSection() {
           <motion.span 
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            exit={{ scaleX: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="flex-1 h-px bg-border ml-4 max-w-xs origin-left" 
           />
@@ -82,8 +79,7 @@ export function ExperienceSection() {
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -50 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col md:flex-row gap-4"
         >
@@ -95,20 +91,18 @@ export function ExperienceSection() {
                 onClick={() => setActiveTab(index)}
                 initial={{ opacity: 0, x: -30, y: 20 }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
-                exit={{ opacity: 0, x: 30, y: -20 }}
-                viewport={{ once: false }}
+                viewport={{ once: true, amount: 0.5 }}
                 transition={{ 
                   delay: 0.5 + index * 0.1,
                   type: "spring",
                   stiffness: 150
                 }}
                 whileHover={{ 
-                  x: 8, 
-                  backgroundColor: "rgba(78, 205, 196, 0.1)",
+                  x: 8,
                   transition: { duration: 0.2 }
                 }}
                 className={cn(
-                  "px-5 py-3 text-sm font-mono whitespace-nowrap transition-all text-left relative overflow-hidden",
+                  "px-5 py-3 text-sm font-mono whitespace-nowrap transition-all text-left relative overflow-hidden hover:bg-primary/10",
                   activeTab === index
                     ? "text-primary bg-primary/10"
                     : "text-muted-foreground hover:text-primary"

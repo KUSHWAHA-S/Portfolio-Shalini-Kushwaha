@@ -323,7 +323,7 @@ export function SkillsSection() {
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.7, type: "spring", bounce: 0.35 }}
           className="mb-6 text-center"
         >
@@ -347,7 +347,7 @@ export function SkillsSection() {
                 className="h-1 rounded-full bg-primary"
                 initial={{ width: 0, opacity: 0 }}
                 whileInView={{ width: i === 2 ? 50 : 15, opacity: 1 }}
-                viewport={{ once: false }}
+                viewport={{ once: true, amount: 0.6 }}
                 transition={{ delay: 0.6 + i * 0.08, duration: 0.4 }}
               />
             ))}
@@ -357,7 +357,7 @@ export function SkillsSection() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, delay: 0.15 }}
           className="grid items-center gap-3"
         >

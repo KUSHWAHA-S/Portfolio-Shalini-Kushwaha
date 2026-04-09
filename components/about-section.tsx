@@ -39,16 +39,14 @@ export function AboutSection() {
         <motion.h2 
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="flex items-center gap-4 text-2xl md:text-3xl font-bold mb-12 text-foreground"
         >
           <motion.span 
             initial={{ scale: 0, rotate: 180 }}
             whileInView={{ scale: 1, rotate: 0 }}
-            exit={{ scale: 0, rotate: -180 }}
-            viewport={{ once: false }}
+            viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200 }}
             className="text-primary font-mono text-lg md:text-xl"
           >
@@ -58,8 +56,7 @@ export function AboutSection() {
           <motion.span 
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            exit={{ scaleX: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
             className="flex-1 h-px bg-border ml-4 max-w-xs origin-right" 
           />
@@ -80,8 +77,7 @@ export function AboutSection() {
                 key={index}
                 initial={{ opacity: 0, y: 40, filter: "blur(10px)", x: -50 }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", x: 0 }}
-                exit={{ opacity: 0, y: -40, filter: "blur(10px)", x: 50 }}
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.4 }}
                 transition={{ 
                   delay: 0.3 + index * 0.15, 
                   duration: 0.6,
@@ -98,8 +94,7 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: 150, rotate: 15, scale: 0.7 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -150, rotate: -15, scale: 0.7 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.35 }}
             transition={{ delay: 0.5, duration: 0.8, type: "spring", stiffness: 80 }}
             style={{ x: imageX }}
             className="relative group"
@@ -123,7 +118,7 @@ export function AboutSection() {
                     fill="url(#cardGradient)"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
-                    viewport={{ once: false }}
+                    viewport={{ once: true, amount: 0.6 }}
                     transition={{ delay: 0.6, duration: 0.5 }}
                   />
                   
@@ -131,7 +126,7 @@ export function AboutSection() {
                   <motion.g
                     initial={{ y: 50, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: false }}
+                    viewport={{ once: true, amount: 0.6 }}
                     transition={{ delay: 0.8, type: "spring" }}
                   >
                     <rect x="50" y="110" width="100" height="60" rx="5" fill={aboutPalette.laptopShell} />
@@ -165,7 +160,7 @@ export function AboutSection() {
                   <motion.g
                     initial={{ scale: 0, rotate: -30 }}
                     whileInView={{ scale: 1, rotate: 0 }}
-                    viewport={{ once: false }}
+                    viewport={{ once: true, amount: 0.6 }}
                     transition={{ delay: 1, type: "spring" }}
                   >
                     <rect x="155" y="140" width="25" height="30" rx="3" fill={aboutPalette.cup} />
@@ -184,7 +179,7 @@ export function AboutSection() {
                   <motion.g
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
-                    viewport={{ once: false }}
+                    viewport={{ once: true, amount: 0.6 }}
                     transition={{ delay: 1.1, type: "spring" }}
                   >
                     <rect x="20" y="150" width="20" height="25" rx="3" fill={aboutPalette.plantPot} />

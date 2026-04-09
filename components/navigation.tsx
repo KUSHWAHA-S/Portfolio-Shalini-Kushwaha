@@ -47,7 +47,9 @@ export function Navigation() {
             whileTap={{ scale: 0.95 }}
           >
             <span className="text-primary">{"<"}</span>
-            Shalini
+            <span className="font-(--font-cedarville-cursive) text-[1.35em] tracking-normal">
+              Shalini
+            </span>
             <span className="text-primary">{" />"}</span>
           </motion.a>
           

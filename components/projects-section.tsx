@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { ExternalLink, Github, Folder } from "lucide-react"
+import Image from "next/image"
 
 const featuredProjects = [
   {
@@ -13,6 +14,7 @@ const featuredProjects = [
     technologies: ["React", "Redux", "JWT", "Web3.js", "MERN"],
     github: "#",
     external: "#",
+    image: "/bus-booking-thumbnail.png",
   },
   {
     title: "Motionfolio",
@@ -21,14 +23,16 @@ const featuredProjects = [
     technologies: ["Next.js", "TypeScript", "SEO", "Routing", "Config-driven UI"],
     github: "#",
     external: "#",
+    image: "/motionfolio-thumbnail.png",
   },
   {
-    title: "Shine.com Homepage Migration",
+    title: "Journey Intent Tracker",
     description:
-      "A production modernization effort focused on moving a legacy homepage to modern Next.js patterns with SSR and ISR, stronger SEO foundations, type-safe components, and measurable Core Web Vitals improvements.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Redux", "React Query"],
+      "A behavior analytics tracker that not only shows what a user did, but also infers possible intent by analyzing their journey, key stops, and interaction patterns across the product.",
+    technologies: ["Next.js", "TypeScript", "Analytics", "User Journeys", "Insights"],
     github: "#",
     external: "#",
+    image: "/tracker-thumbnail.png",
   },
 ]
 
@@ -137,13 +141,24 @@ function FeaturedProject({
         } relative group`}
       >
         <div className="relative overflow-hidden rounded-lg">
-          <motion.div 
-            className="aspect-video bg-primary/20 group-hover:bg-transparent transition-all duration-300"
+          <motion.div
+            className="relative aspect-video overflow-hidden bg-primary/20 transition-all duration-300 group-hover:bg-transparent"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="w-full h-full bg-linear-to-br from-primary/30 to-secondary/30" />
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={`${project.title} preview`}
+                fill
+                sizes="(max-width: 768px) 100vw, 55vw"
+                className="object-cover"
+                priority={index === 0}
+              />
+            ) : (
+              <div className="h-full w-full bg-linear-to-br from-primary/30 to-secondary/30" />
+            )}
+            <div className="absolute inset-0 bg-linear-to-br from-primary/25 via-transparent to-secondary/20 opacity-90 transition-opacity duration-300 group-hover:opacity-40" />
           </motion.div>
-          <div className="absolute inset-0 bg-primary/10 transition-opacity duration-300 group-hover:opacity-0" />
         </div>
       </motion.div>
       

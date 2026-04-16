@@ -19,10 +19,20 @@ export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   
   useEffect(() => {
+    let ticking = false
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const next = window.scrollY > 50
+        setIsScrolled((prev) => (prev === next ? prev : next))
+        ticking = false
+      })
     }
-    window.addEventListener("scroll", handleScroll)
+
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
   

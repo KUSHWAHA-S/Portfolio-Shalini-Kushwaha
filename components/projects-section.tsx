@@ -1,9 +1,8 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useInView } from "framer-motion"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
-import { ExternalLink, Github, Folder } from "lucide-react"
+import { ExternalLink, Github } from "lucide-react"
 import Image from "next/image"
 
 const featuredProjects = [
@@ -33,57 +32,6 @@ const featuredProjects = [
     github: "#",
     external: "#",
     image: "/tracker-thumbnail.png",
-  },
-]
-
-const otherProjects = [
-  {
-    title: "Lighthouse Insightly",
-    description:
-      "Analytics-facing product work for PayPal focused on dashboards, funnels, cohorts, and smoother data-heavy interactions.",
-    technologies: ["React", "GraphQL", "Apollo Client"],
-    github: "#",
-    external: "#",
-  },
-  {
-    title: "Performance Engineering",
-    description:
-      "Applied profiling, code splitting, and rendering optimizations to improve responsiveness and Core Web Vitals.",
-    technologies: ["Next.js", "Profiler", "Code Splitting"],
-    github: "#",
-    external: "#",
-  },
-  {
-    title: "State Architecture",
-    description:
-      "Structured maintainable frontend state with Redux for app flows and React Query for server-state synchronization.",
-    technologies: ["Redux", "React Query", "REST APIs"],
-    github: "#",
-    external: "#",
-  },
-  {
-    title: "Responsive UI Systems",
-    description:
-      "Built reusable, mobile-first interfaces aligned with design systems and modern accessibility expectations.",
-    technologies: ["Tailwind CSS", "HTML5", "CSS3"],
-    github: "#",
-    external: "#",
-  },
-  {
-    title: "Product SEO Foundations",
-    description:
-      "Implemented SEO-conscious rendering, routing, and metadata behavior for user-facing pages and public experiences.",
-    technologies: ["Next.js", "SSR", "ISR"],
-    github: "#",
-    external: "#",
-  },
-  {
-    title: "Agile Delivery",
-    description:
-      "Collaborated closely with product, design, and engineering teams using Jira, Git, and Figma to ship iterative improvements.",
-    technologies: ["Jira", "Git", "Figma"],
-    github: "#",
-    external: "#",
   },
 ]
 
@@ -255,131 +203,12 @@ function FeaturedProject({
   )
 }
 
-function OtherProject({
-  project,
-  index,
-  isInView,
-}: {
-  project: (typeof otherProjects)[0]
-  index: number
-  isInView: boolean
-}) {
-  // Different entry directions based on grid position
-  const getEntryAnimation = () => {
-    const row = Math.floor(index / 3)
-    const col = index % 3
-    
-    if (row % 2 === 0) {
-      // Even rows: stagger from left to right with rising
-      return { x: -50 + col * 25, y: 80, rotate: -5 + col * 5 }
-    } else {
-      // Odd rows: stagger from right to left with rising
-      return { x: 50 - col * 25, y: 80, rotate: 5 - col * 5 }
-    }
-  }
-  
-  const entry = getEntryAnimation()
-  
-  return (
-    <motion.div
-      initial={{ opacity: 0, ...entry, scale: 0.85 }}
-      animate={isInView ? { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 } : {}}
-      transition={{ 
-        delay: 0.1 + index * 0.12, 
-        duration: 0.6, 
-        type: "spring",
-        stiffness: 100
-      }}
-      whileHover={{ 
-        y: -15, 
-        scale: 1.03,
-        rotateY: 5,
-        transition: { duration: 0.3 }
-      }}
-      className="bg-card p-6 rounded-lg flex flex-col h-full cursor-pointer"
-      style={{ transformStyle: "preserve-3d" }}
-    >
-      <motion.div 
-        className="flex items-center justify-between mb-6"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ delay: 0.2 + index * 0.12 }}
-      >
-        <motion.div
-          whileHover={{ rotate: 15, scale: 1.2 }}
-          transition={{ type: "spring" }}
-        >
-          <Folder className="h-10 w-10 text-primary" />
-        </motion.div>
-        {(project.github !== "#" || project.external !== "#") && (
-          <div className="flex gap-4">
-            {project.github !== "#" && (
-              <motion.a
-                href={project.github}
-                whileHover={{ scale: 1.3, y: -2 }}
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Github className="h-5 w-5" />
-              </motion.a>
-            )}
-            {project.external !== "#" && (
-              <motion.a
-                href={project.external}
-                whileHover={{ scale: 1.3, y: -2 }}
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <ExternalLink className="h-5 w-5" />
-              </motion.a>
-            )}
-          </div>
-        )}
-      </motion.div>
-      <motion.h3 
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ delay: 0.25 + index * 0.12 }}
-        className="text-xl font-semibold text-foreground mb-2 hover:text-primary transition-colors"
-      >
-        {project.external === "#" ? project.title : <a href={project.external}>{project.title}</a>}
-      </motion.h3>
-      <motion.p 
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ delay: 0.3 + index * 0.12 }}
-        className="text-muted-foreground text-sm leading-relaxed flex-1"
-      >
-        {project.description}
-      </motion.p>
-      <motion.ul 
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ delay: 0.35 + index * 0.12 }}
-        className="flex flex-wrap gap-2 mt-4 font-mono text-xs text-muted-foreground"
-      >
-        {project.technologies.map((tech) => (
-          <motion.li 
-            key={tech}
-            className="transition-colors hover:text-primary"
-            whileHover={{ scale: 1.1 }}
-          >
-            {tech}
-          </motion.li>
-        ))}
-      </motion.ul>
-    </motion.div>
-  )
-}
-
 export function ProjectsSection() {
   const ref = useRef(null)
-  const containerRef = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   
-  const otherRef = useRef(null)
-  const otherIsInView = useInView(otherRef, { once: true, margin: "-100px" })
-  
   return (
-    <section id="projects" className="py-24 md:py-32" ref={containerRef}>
+    <section id="projects" className="py-24 md:py-32">
       <div className="max-w-5xl mx-auto px-6" ref={ref}>
         {/* Header - zooms in with rotation (different from Experience) */}
         <motion.h2 
@@ -416,37 +245,6 @@ export function ProjectsSection() {
             />
           ))}
         </div>
-        
-        {/* Other Projects */}
-        {/* <div ref={otherRef}>
-          <motion.h3 
-            initial={{ opacity: 0, y: -50, scale: 0.8 }}
-            animate={otherIsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="text-center text-2xl font-bold text-foreground mb-2"
-          >
-            Other Noteworthy Projects
-          </motion.h3>
-          <motion.p 
-            initial={{ opacity: 0, y: -30 }}
-            animate={otherIsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="text-center text-primary font-mono text-sm mb-12"
-          >
-            view the archive
-          </motion.p>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {otherProjects.map((project, index) => (
-              <OtherProject
-                key={project.title}
-                project={project}
-                index={index}
-                isInView={otherIsInView}
-              />
-            ))}
-          </div>
-        </div> */}
       </div>
     </section>
   )

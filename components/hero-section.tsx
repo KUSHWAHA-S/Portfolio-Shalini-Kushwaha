@@ -12,6 +12,8 @@ import { avatarPalettes, getVisualThemeMode } from "@/lib/visual-theme"
 function CartoonAvatar() {
   const { resolvedTheme } = useTheme()
   const avatarRef = useRef<HTMLDivElement>(null)
+  const frameRef = useRef<number | null>(null)
+  const lastOffsetRef = useRef({ x: 0, y: 0 })
   const [mounted, setMounted] = useState(false)
   const [pupilOffset, setPupilOffset] = useState({ x: 0, y: 0 })
   const avatarPalette = useMemo(
@@ -41,13 +43,27 @@ function CartoonAvatar() {
       const intensity = Math.min(distance / 180, 1)
       const scale = (maxOffset * intensity) / distance
 
-      setPupilOffset({
+      const next = {
         x: deltaX * scale,
         y: deltaY * scale,
+      }
+
+      if (frameRef.current !== null) return
+      frameRef.current = window.requestAnimationFrame(() => {
+        const prev = lastOffsetRef.current
+        if (Math.abs(prev.x - next.x) > 0.01 || Math.abs(prev.y - next.y) > 0.01) {
+          lastOffsetRef.current = next
+          setPupilOffset(next)
+        }
+        frameRef.current = null
       })
     }
 
-    const resetEyes = () => setPupilOffset({ x: 0, y: 0 })
+    const resetEyes = () => {
+      const center = { x: 0, y: 0 }
+      lastOffsetRef.current = center
+      setPupilOffset(center)
+    }
 
     window.addEventListener("mousemove", handlePointerMove)
     window.addEventListener("mouseleave", resetEyes)
@@ -55,6 +71,9 @@ function CartoonAvatar() {
     return () => {
       window.removeEventListener("mousemove", handlePointerMove)
       window.removeEventListener("mouseleave", resetEyes)
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current)
+      }
     }
   }, [])
 

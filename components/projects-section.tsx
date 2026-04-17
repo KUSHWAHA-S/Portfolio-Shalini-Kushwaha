@@ -13,7 +13,7 @@ const featuredProjects = [
     technologies: ["Next.js", "TypeScript", "Analytics", "User Journeys", "Insights"],
     github: "#",
     external: "#",
-    image: "/tracker-thumbnail.png",
+    image: "/tracker-thumbnail.jpg",
   },
   {
     title: "Motionfolio",
@@ -21,8 +21,8 @@ const featuredProjects = [
       "A multi-tenant portfolio platform where a single Next.js frontend dynamically renders multiple user portfolios from configuration, routing rules, and publish or unpublish states.",
     technologies: ["Next.js", "TypeScript", "SEO", "Routing", "Config-driven UI"],
     github: "#",
-    external: "#",
-    image: "/motionfolio-thumbnail.png",
+    external: "https://motionfolio-btpz.vercel.app/portfolio/new",
+    image: "/motionfolio-thumbnail.jpg",
   },
   {
     title: "Bus Booking Web App",
@@ -31,7 +31,7 @@ const featuredProjects = [
     technologies: ["Next.js", "React", "TypeScript", "Booking Flow", "UX"],
     github: "#",
     external: "#",
-    image: "/bus-booking-thumbnail.png",
+    image: "/bus-booking-thumbnail.jpg",
   },
 ]
 

@@ -3,10 +3,14 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { ArrowDown, Sparkles } from "lucide-react"
+import dynamic from "next/dynamic"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
-import { HeroScene } from "./hero-scene"
 import { avatarPalettes, getVisualThemeMode } from "@/lib/visual-theme"
+
+const HeroScene = dynamic(() => import("./hero-scene").then((m) => m.HeroScene), {
+  ssr: false,
+})
 
 // Cartoon Avatar Component
 function CartoonAvatar() {
@@ -357,6 +361,26 @@ export function HeroSection() {
   const fullSurname = "Kushwaha"
   const [displaySurname, setDisplaySurname] = useState("K")
   const [isSurnameHovered, setIsSurnameHovered] = useState(false)
+  const [enableHeavyVisuals, setEnableHeavyVisuals] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const desktop = window.matchMedia?.("(min-width: 768px)")?.matches ?? false
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false
+    setIsDesktop(desktop)
+
+    if (!desktop || reduceMotion) return
+
+    const idle = (cb: () => void) => {
+      if ("requestIdleCallback" in window) {
+        ;(window as any).requestIdleCallback(cb, { timeout: 1200 })
+      } else {
+        setTimeout(cb, 900)
+      }
+    }
+
+    idle(() => setEnableHeavyVisuals(true))
+  }, [])
 
   useEffect(() => {
     if (!isSurnameHovered) {
@@ -379,7 +403,7 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <HeroScene />
+      {enableHeavyVisuals ? <HeroScene /> : null}
 
       {/* Hero Content */}
       <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
@@ -410,21 +434,23 @@ export function HeroSection() {
               onHoverStart={() => setIsSurnameHovered(true)}
               onHoverEnd={() => setIsSurnameHovered(false)}
             >
-              {"Shalini".split("").map((char, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + i * 0.05, type: "spring" }}
-                  whileHover={{
-                    scale: 1.2,
-                    rotate: Math.random() > 0.5 ? 5 : -5,
-                  }}
-                  className="inline-block cursor-default transition-colors hover:text-primary"
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
+              {isDesktop
+                ? "Shalini".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 + i * 0.05, type: "spring" }}
+                      whileHover={{
+                        scale: 1.2,
+                        rotate: Math.random() > 0.5 ? 5 : -5,
+                      }}
+                      className="inline-block cursor-default transition-colors hover:text-primary"
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))
+                : "Shalini"}
               <span>{"\u00A0"}</span>
               <motion.span
                 initial={{ opacity: 0, y: 50 }}

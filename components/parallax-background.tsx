@@ -29,13 +29,14 @@ interface FloatingElement {
 
 function FallingParticle({ particle }: { particle: Particle }) {
   const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 3000], [0, 300 * (particle.size / 8)])
+  const y = useTransform(scrollY, [0, 3000], [0, 220 * (particle.size / 8)])
   
   return (
     <motion.div
       className="absolute rounded-full"
       style={{
         left: `${particle.x}%`,
+        top: "-5%",
         width: particle.size,
         height: particle.size,
         opacity: particle.opacity,
@@ -44,7 +45,7 @@ function FallingParticle({ particle }: { particle: Particle }) {
         backgroundColor: particle.color,
       }}
       animate={{
-        top: ["-5%", "105%"],
+        translateY: ["0vh", "120vh"],
       }}
       transition={{
         duration: particle.duration,
@@ -141,7 +142,7 @@ export function ParallaxBackground() {
 
     // Create falling particles
     const newParticles: Particle[] = []
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 22; i++) {
       newParticles.push({
         id: i,
         x: Math.random() * 100,
@@ -157,7 +158,7 @@ export function ParallaxBackground() {
     // Create floating geometric shapes
     const shapes: FloatingElement[] = []
     const types: FloatingElement["type"][] = ["circle", "square", "ring", "dot", "cross"]
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 12; i++) {
       const type = types[Math.floor(Math.random() * types.length)]
       shapes.push({
         id: i,

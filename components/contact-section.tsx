@@ -32,7 +32,8 @@ export function ContactSection() {
         <div className="absolute inset-16 border border-primary/10 rounded-full" />
       </motion.div>
       
-      <div className="max-w-2xl mx-auto px-6 text-center relative z-10" ref={ref}>
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
+        <div className="mx-auto max-w-2xl text-center" ref={ref}>
         {/* Section number - drops from top with bounce */}
         <motion.p 
           initial={{ opacity: 0, y: -80, scale: 0.5 }}
@@ -48,7 +49,7 @@ export function ContactSection() {
           >
             <Sparkles className="w-4 h-4" />
           </motion.span>
-          <span>05. What&apos;s Next?</span>
+          <span>What&apos;s Next?</span>
           <motion.span
             animate={isInView ? { 
               rotate: [0, -15, 15, 0],
@@ -181,6 +182,7 @@ export function ContactSection() {
             transition={{ delay: 1.3, duration: 0.8 }}
           />
         </motion.div>
+        </div>
       </div>
     </section>
   )

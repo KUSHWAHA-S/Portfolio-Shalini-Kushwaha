@@ -46,7 +46,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="py-24 md:py-32" ref={containerRef}>
       <motion.div 
-        className="max-w-3xl mx-auto px-6"
+        className="mx-auto w-full max-w-5xl px-6"
         style={{ opacity, scale }}
       >
         {/* Header - slides in from LEFT */}
@@ -57,15 +57,6 @@ export function ExperienceSection() {
           transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
           className="flex items-center gap-4 text-2xl md:text-3xl font-bold mb-12 text-foreground"
         >
-          <motion.span 
-            initial={{ scale: 0, y: -50 }}
-            whileInView={{ scale: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.5, delay: 0.3, type: "spring", bounce: 0.5 }}
-            className="text-primary font-mono text-lg md:text-xl"
-          >
-            03.
-          </motion.span>
           Where I&apos;ve Worked
           <motion.span 
             initial={{ scaleX: 0 }}

@@ -319,7 +319,7 @@ export function SkillsSection() {
       className="relative overflow-hidden py-24 md:py-32"
       ref={containerRef}
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -329,12 +329,12 @@ export function SkillsSection() {
         >
           <div className="mb-4 inline-flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-primary" />
-            <span className="font-mono text-lg text-primary">02.</span>
             <Sparkles className="h-5 w-5 text-primary" />
           </div>
 
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-5xl">
-            My Superpowers <span className="text-primary">🦸</span>
+            My Superpowers
+            {/* <span className="text-primary">🦸</span> */}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             The tools and technologies I use to bring ideas to life

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, Sparkles, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -52,15 +52,14 @@ export function Navigation() {
         <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <motion.a
             href="#"
-            className="text-xl font-bold text-foreground"
+            className="text-xl text-foreground"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-primary">{"<"}</span>
-            <span className="font-(--font-cedarville-cursive) text-[1.35em] tracking-normal">
-              Shalini
+            <span className="[font-family:var(--font-mrs-saint-delafield)] text-[1.6em] tracking-normal">
+              Shalini K
             </span>
-            <span className="text-primary">{" />"}</span>
+            <Sparkles className="ml-2 inline-block h-5 w-5 text-primary align-middle" />
           </motion.a>
           
           {/* Desktop Navigation */}
@@ -75,7 +74,6 @@ export function Navigation() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -2 }}
               >
-                <span className="text-primary font-mono mr-1">0{index + 1}.</span>
                 {link.name}
               </motion.a>
             ))}
@@ -151,7 +149,6 @@ export function Navigation() {
                     transition={{ delay: index * 0.1 }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <span className="text-primary font-mono mr-2 text-sm">0{index + 1}.</span>
                     {link.name}
                   </motion.a>
                 ))}

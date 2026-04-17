@@ -7,13 +7,13 @@ import Image from "next/image"
 
 const featuredProjects = [
   {
-    title: "ClearClaim",
+    title: "Journey Intent Tracker",
     description:
-      "A decentralized content licensing platform built on the MERN stack, designed to help creators register and manage digital assets with stronger provenance, role-aware workflows, and reusable Web3 integrations.",
-    technologies: ["React", "Redux", "JWT", "Web3.js", "MERN"],
+      "A behavior analytics tracker that not only shows what a user did, but also infers possible intent by analyzing their journey, key stops, and interaction patterns across the product.",
+    technologies: ["Next.js", "TypeScript", "Analytics", "User Journeys", "Insights"],
     github: "#",
     external: "#",
-    image: "/bus-booking-thumbnail.png",
+    image: "/tracker-thumbnail.png",
   },
   {
     title: "Motionfolio",
@@ -25,13 +25,13 @@ const featuredProjects = [
     image: "/motionfolio-thumbnail.png",
   },
   {
-    title: "Journey Intent Tracker",
+    title: "Bus Booking Web App",
     description:
-      "A behavior analytics tracker that not only shows what a user did, but also infers possible intent by analyzing their journey, key stops, and interaction patterns across the product.",
-    technologies: ["Next.js", "TypeScript", "Analytics", "User Journeys", "Insights"],
+      "A modern bus booking experience focused on fast search, seat selection, and smooth checkout flows, with clear route details and user-friendly trip management across devices.",
+    technologies: ["Next.js", "React", "TypeScript", "Booking Flow", "UX"],
     github: "#",
     external: "#",
-    image: "/tracker-thumbnail.png",
+    image: "/bus-booking-thumbnail.png",
   },
 ]
 
@@ -209,7 +209,7 @@ export function ProjectsSection() {
   
   return (
     <section id="projects" className="py-24 md:py-32">
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+      <div className="mx-auto w-full max-w-5xl px-6" ref={ref}>
         {/* Header - zooms in with rotation (different from Experience) */}
         <motion.h2 
           initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
@@ -217,14 +217,6 @@ export function ProjectsSection() {
           transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
           className="flex items-center gap-4 text-2xl md:text-3xl font-bold mb-12 text-foreground"
         >
-          <motion.span 
-            initial={{ scale: 0, x: -50 }}
-            animate={isInView ? { scale: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
-            className="text-primary font-mono text-lg md:text-xl"
-          >
-            04.
-          </motion.span>
           Some Things I&apos;ve Built
           <motion.span 
             initial={{ scaleX: 0 }}

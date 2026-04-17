@@ -32,7 +32,7 @@ export function AboutSection() {
   return (
     <section id="about" className="py-24 md:py-32 relative" ref={containerRef}>
       <motion.div 
-        className="max-w-4xl mx-auto px-6"
+        className="mx-auto w-full max-w-5xl px-6"
         style={{ opacity, scale }}
       >
         {/* Header - slides in from RIGHT */}
@@ -43,15 +43,6 @@ export function AboutSection() {
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="flex items-center gap-4 text-2xl md:text-3xl font-bold mb-12 text-foreground"
         >
-          <motion.span 
-            initial={{ scale: 0, rotate: 180 }}
-            whileInView={{ scale: 1, rotate: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200 }}
-            className="text-primary font-mono text-lg md:text-xl"
-          >
-            01.
-          </motion.span>
           About Me
           <motion.span 
             initial={{ scaleX: 0 }}

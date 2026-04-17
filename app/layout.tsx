@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Cedarville_Cursive, Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Mrs_Saint_Delafield } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 })
 
-const cedarvilleCursive = Cedarville_Cursive({
+const mrsSaintDelafield = Mrs_Saint_Delafield({
   subsets: ["latin"],
   weight: "400",
-  variable: "--font-cedarville-cursive",
+  variable: "--font-mrs-saint-delafield",
 })
 
 export const metadata: Metadata = {
@@ -70,7 +70,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cedarvilleCursive.variable} font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${mrsSaintDelafield.variable} font-sans antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           {children}

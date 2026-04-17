@@ -382,7 +382,7 @@ export function HeroSection() {
       <HeroScene />
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6">
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
           {/* Text content */}
           <div className="flex-1 text-center md:text-left">

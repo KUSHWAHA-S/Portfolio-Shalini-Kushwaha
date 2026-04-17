@@ -51,7 +51,7 @@ npm run start
 
 - Light/dark theme tokens live in `app/globals.css` (`:root` for light, `.dark` for dark).
 - The theme toggle is wired up in `app/layout.tsx` using `next-themes`.
-- Fonts are loaded with `next/font/google` (including `Cedarville Cursive` for the navbar name).
+- Fonts are loaded with `next/font/google` (including `Mrs Saint Delafield` for the navbar name).
 
 ## Assets
 

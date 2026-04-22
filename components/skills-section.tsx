@@ -170,7 +170,6 @@ export function SkillsSection() {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Keeping these for future if you switch back to "generated route".
   const routeContainerRef = useRef<HTMLDivElement | null>(null);
   const frontendRef = useRef<HTMLDivElement | null>(null);
   const backendRef = useRef<HTMLDivElement | null>(null);
@@ -186,7 +185,7 @@ export function SkillsSection() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [0, 1, 1, 0]);
 
-  const useGeneratedRoute = false;
+  const showRouteDebugOverlay = false;
 
   const computeRoute = useMemo(() => {
     const getAnchor = (rect: DOMRect, side: "left" | "right" | "top" | "bottom", t = 0.5) => {
@@ -285,7 +284,7 @@ export function SkillsSection() {
   }, []);
 
   useEffect(() => {
-    if (!useGeneratedRoute) return;
+    if (!showRouteDebugOverlay) return;
     let raf = 0;
     const schedule = () => {
       if (raf) return;
@@ -311,11 +310,10 @@ export function SkillsSection() {
       ro.disconnect();
       if (raf) window.cancelAnimationFrame(raf);
     };
-  }, [computeRoute, useGeneratedRoute]);
+  }, [computeRoute, showRouteDebugOverlay]);
 
   return (
     <section
-      id="skills"
       className="relative overflow-hidden py-24 md:py-32"
       ref={containerRef}
     >
@@ -328,11 +326,12 @@ export function SkillsSection() {
           className="mb-6 text-center"
         >
           <div className="mb-4 inline-flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-primary" />
+            {/* <Sparkles className="h-5 w-5 text-primary" /> */}
             <Sparkles className="h-5 w-5 text-primary" />
           </div>
 
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-5xl">
+            
             My Superpowers
             {/* <span className="text-primary">🦸</span> */}
           </h2>
@@ -361,14 +360,24 @@ export function SkillsSection() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="grid items-center gap-3"
         >
-          <motion.div className="relative mx-auto w-full max-w-6xl py-1" style={{ opacity }}>
+          <motion.div
+            className="relative mx-auto w-full max-w-6xl py-1"
+            style={{ opacity }}
+          >
             {/* V layout: two stops on row 1, third centered on row 2 — matches sketch reading order */}
-            <div className="relative mx-auto w-full px-2 sm:px-6 min-h-[420px] md:min-h-[520px]" ref={routeContainerRef}>
-
+            <div
+              className="relative mx-auto w-full px-2 sm:px-6 min-h-[420px] md:min-h-[520px]"
+              ref={routeContainerRef}
+            >
               {/* Exact route asset (put your brush-stroke arrow into /public/skills-route.png or .svg) */}
               <div className="pointer-events-none absolute inset-0 z-0 h-full w-full">
                 {/* Light theme */}
-                <svg className="h-full w-full dark:hidden" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <svg
+                  className="h-full w-full dark:hidden"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
                   <image
                     href={ROUTE_ASSET_LIGHT_SRC}
                     x="0"
@@ -382,7 +391,12 @@ export function SkillsSection() {
                 </svg>
 
                 {/* Dark theme */}
-                <svg className="hidden h-full w-full dark:block" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <svg
+                  className="hidden h-full w-full dark:block"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
                   <image
                     href={ROUTE_ASSET_DARK_SRC}
                     x="0"
@@ -396,8 +410,7 @@ export function SkillsSection() {
                 </svg>
               </div>
 
-              {/* Optional: generated route mode (disabled by default) */}
-              {useGeneratedRoute ? (
+              {showRouteDebugOverlay ? (
                 <motion.svg
                   viewBox={`0 0 ${routeSize.w} ${routeSize.h}`}
                   preserveAspectRatio="none"
@@ -408,12 +421,36 @@ export function SkillsSection() {
                   viewport={{ once: true, amount: 0.35 }}
                 >
                   <defs>
-                    <linearGradient id="skillsRouteGradient" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.12" />
-                      <stop offset="45%" stopColor="var(--color-primary)" stopOpacity="0.55" />
-                      <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0.22" />
+                    <linearGradient
+                      id="skillsRouteGradient"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="1"
+                    >
+                      <stop
+                        offset="0%"
+                        stopColor="var(--color-primary)"
+                        stopOpacity="0.12"
+                      />
+                      <stop
+                        offset="45%"
+                        stopColor="var(--color-primary)"
+                        stopOpacity="0.55"
+                      />
+                      <stop
+                        offset="100%"
+                        stopColor="var(--color-primary)"
+                        stopOpacity="0.22"
+                      />
                     </linearGradient>
-                    <filter id="skillsRouteGlow" x="-30%" y="-30%" width="160%" height="160%">
+                    <filter
+                      id="skillsRouteGlow"
+                      x="-30%"
+                      y="-30%"
+                      width="160%"
+                      height="160%"
+                    >
                       <feGaussianBlur stdDeviation="1.9" result="blur" />
                       <feColorMatrix
                         in="blur"
@@ -480,7 +517,11 @@ export function SkillsSection() {
                       hidden: { pathLength: 0, opacity: 0 },
                       show: { pathLength: 1, opacity: 1 },
                     }}
-                    transition={{ duration: 1.1, ease: "easeInOut", delay: 0.03 }}
+                    transition={{
+                      duration: 1.1,
+                      ease: "easeInOut",
+                      delay: 0.03,
+                    }}
                   />
                   <motion.path
                     d={routeD || "M 0 0"}
@@ -499,9 +540,17 @@ export function SkillsSection() {
                     }}
                     animate={{ strokeDashoffset: [0, -28] }}
                     transition={{
-                      pathLength: { duration: 1.1, ease: "easeInOut", delay: 0.03 },
+                      pathLength: {
+                        duration: 1.1,
+                        ease: "easeInOut",
+                        delay: 0.03,
+                      },
                       opacity: { duration: 0.25, delay: 0.12 },
-                      strokeDashoffset: { duration: 3.2, ease: "linear", repeat: Infinity },
+                      strokeDashoffset: {
+                        duration: 3.2,
+                        ease: "linear",
+                        repeat: Infinity,
+                      },
                     }}
                   />
                 </motion.svg>
@@ -509,7 +558,10 @@ export function SkillsSection() {
 
               <div className="relative z-10 mx-auto grid max-w-5xl grid-cols-1 gap-10 pb-2 pt-6 md:grid-cols-2 md:gap-x-24 md:gap-y-12 md:pb-8 md:pt-8">
                 {/* Top-left */}
-                <div className="flex justify-center md:justify-self-end md:pr-2 md:pt-2" ref={frontendRef}>
+                <div
+                  className="flex justify-center md:justify-self-end md:pr-2 md:pt-2"
+                  ref={frontendRef}
+                >
                   <SkillStopCard
                     section={skillSections[0]}
                     active={activeIndex === 0}
@@ -518,7 +570,10 @@ export function SkillsSection() {
                   />
                 </div>
                 {/* Top-right (slightly lower than left, like sketch) */}
-                <div className="flex justify-center md:justify-self-start md:pl-2 md:pt-50" ref={backendRef}>
+                <div
+                  className="flex justify-center md:justify-self-start md:pl-2 md:pt-50"
+                  ref={backendRef}
+                >
                   <SkillStopCard
                     section={skillSections[1]}
                     active={activeIndex === 1}

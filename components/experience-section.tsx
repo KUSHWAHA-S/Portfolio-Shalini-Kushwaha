@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
 import { cn } from "@/lib/utils"
+import { Sparkles } from "lucide-react"
 
 const experiences = [
   {
@@ -44,13 +45,13 @@ export function ExperienceSection() {
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95])
   
   return (
-    <section id="experience" className="py-24 md:py-32" ref={containerRef}>
-      <motion.div 
+    <section className="py-24 md:py-32" ref={containerRef}>
+      <motion.div
         className="mx-auto w-full max-w-5xl px-6"
         style={{ opacity, scale }}
       >
         {/* Header - slides in from LEFT */}
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, x: -150, scale: 0.8 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.35 }}
@@ -58,16 +59,17 @@ export function ExperienceSection() {
           className="flex items-center gap-4 text-2xl md:text-3xl font-bold mb-12 text-foreground"
         >
           Where I&apos;ve Worked
-          <motion.span 
+          <Sparkles className="h-5 w-5 text-primary" />
+          <motion.span
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex-1 h-px bg-border ml-4 max-w-xs origin-left" 
+            className="flex-1 h-px bg-border ml-4 max-w-xs origin-left"
           />
         </motion.h2>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -83,20 +85,20 @@ export function ExperienceSection() {
                 initial={{ opacity: 0, x: -30, y: 20 }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
-                transition={{ 
+                transition={{
                   delay: 0.5 + index * 0.1,
                   type: "spring",
-                  stiffness: 150
+                  stiffness: 150,
                 }}
-                whileHover={{ 
+                whileHover={{
                   x: 8,
-                  transition: { duration: 0.2 }
+                  transition: { duration: 0.2 },
                 }}
                 className={cn(
                   "px-5 py-3 text-sm font-mono whitespace-nowrap transition-all text-left relative overflow-hidden hover:bg-primary/10",
                   activeTab === index
                     ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-primary"
+                    : "text-muted-foreground hover:text-primary",
                 )}
               >
                 <AnimatePresence>
@@ -107,7 +109,11 @@ export function ExperienceSection() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </AnimatePresence>
@@ -120,83 +126,91 @@ export function ExperienceSection() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
           </div>
-          
+
           {/* Tab Content */}
           <div className="flex-1 min-h-[350px]">
             <AnimatePresence mode="wait">
-              {experiences.map((exp, index) => (
-                activeTab === index && (
-                  <motion.div
-                    key={exp.company}
-                    initial={{ opacity: 0, x: 50, rotateY: 30 }}
-                    animate={{ opacity: 1, x: 0, rotateY: 0 }}
-                    exit={{ opacity: 0, x: -50, rotateY: -30 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="space-y-4"
-                  >
-                    <motion.h3 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 }}
-                      className="text-xl font-medium text-foreground"
+              {experiences.map(
+                (exp, index) =>
+                  activeTab === index && (
+                    <motion.div
+                      key={exp.company}
+                      initial={{ opacity: 0, x: 50, rotateY: 30 }}
+                      animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                      exit={{ opacity: 0, x: -50, rotateY: -30 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      className="space-y-4"
                     >
-                      {exp.title}{" "}
-                      <span className="text-primary">@ {exp.company}</span>
-                    </motion.h3>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.15 }}
-                      className="text-sm font-mono text-muted-foreground"
-                    >
-                      {exp.date}
-                    </motion.p>
-                    <ul className="space-y-3">
-                      {exp.description.map((item, i) => (
-                        <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: 30 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.2 + i * 0.1 }}
-                          className="flex gap-2 text-muted-foreground leading-relaxed"
-                        >
-                          <motion.span 
-                            className="text-primary mt-1 shrink-0"
-                            animate={{ x: [0, 4, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
+                      <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-xl font-medium text-foreground"
+                      >
+                        {exp.title}{" "}
+                        <span className="text-primary">@ {exp.company}</span>
+                      </motion.h3>
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.15 }}
+                        className="text-sm font-mono text-muted-foreground"
+                      >
+                        {exp.date}
+                      </motion.p>
+                      <ul className="space-y-3">
+                        {exp.description.map((item, i) => (
+                          <motion.li
+                            key={i}
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.2 + i * 0.1 }}
+                            className="flex gap-2 text-muted-foreground leading-relaxed"
                           >
-                            {"▹"}
+                            <motion.span
+                              className="text-primary mt-1 shrink-0"
+                              animate={{ x: [0, 4, 0] }}
+                              transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                delay: i * 0.2,
+                              }}
+                            >
+                              {"▹"}
+                            </motion.span>
+                            {item}
+                          </motion.li>
+                        ))}
+                      </ul>
+                      <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="flex flex-wrap gap-2 pt-4"
+                      >
+                        {exp.technologies.map((tech, techIndex) => (
+                          <motion.span
+                            key={tech}
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                              delay: 0.6 + techIndex * 0.05,
+                              type: "spring",
+                            }}
+                            whileHover={{ scale: 1.1, y: -2 }}
+                            className="px-3 py-1 text-xs font-mono text-primary bg-primary/10 rounded-full cursor-default"
+                          >
+                            {tech}
                           </motion.span>
-                          {item}
-                        </motion.li>
-                      ))}
-                    </ul>
-                    <motion.div 
-                      initial={{ opacity: 0, y: 15 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="flex flex-wrap gap-2 pt-4"
-                    >
-                      {exp.technologies.map((tech, techIndex) => (
-                        <motion.span
-                          key={tech}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.6 + techIndex * 0.05, type: "spring" }}
-                          whileHover={{ scale: 1.1, y: -2 }}
-                          className="px-3 py-1 text-xs font-mono text-primary bg-primary/10 rounded-full cursor-default"
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
+                        ))}
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
-                )
-              ))}
+                  ),
+              )}
             </AnimatePresence>
           </div>
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

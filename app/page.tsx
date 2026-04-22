@@ -16,16 +16,16 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <AboutSection />
-      <LazyMount minHeight={900}>
+      <LazyMount id="skills" minHeight={900}>
         <SkillsSection />
       </LazyMount>
-      <LazyMount minHeight={900}>
+      <LazyMount id="experience" minHeight={900}>
         <ExperienceSection />
       </LazyMount>
-      <LazyMount minHeight={1100}>
+      <LazyMount id="projects" minHeight={1100}>
         <ProjectsSection />
       </LazyMount>
-      <LazyMount minHeight={700}>
+      <LazyMount id="contact" minHeight={700}>
         <ContactSection />
       </LazyMount>
       <Footer />

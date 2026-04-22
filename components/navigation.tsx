@@ -46,7 +46,7 @@ export function Navigation() {
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
             ? "bg-background/80 backdrop-blur-lg border-b border-border"
-            : "bg-transparent"
+            : "bg-transparent",
         )}
       >
         <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -57,11 +57,11 @@ export function Navigation() {
             whileTap={{ scale: 0.95 }}
           >
             <span className="[font-family:var(--font-mrs-saint-delafield)] text-[1.6em] tracking-normal">
-              Shalini K
+              Shalini
             </span>
             <Sparkles className="ml-2 inline-block h-5 w-5 text-primary align-middle" />
           </motion.a>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
@@ -88,11 +88,13 @@ export function Navigation() {
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                 asChild
               >
-                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="/SHALINI_KUSHWAHA_RESUME.pdf" download>
+                  Resume
+                </a>
               </Button>
             </motion.div>
           </div>
-          
+
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
@@ -105,7 +107,7 @@ export function Navigation() {
         </nav>
       </motion.header>
       <ThemeToggle />
-      
+
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
@@ -157,7 +159,9 @@ export function Navigation() {
                   className="border-primary text-primary hover:bg-primary hover:text-primary-foreground mt-4"
                   asChild
                 >
-                  <a href="/resume.pdf" target="_blank">Resume</a>
+                  <a href="/SHALINI_KUSHWAHA_RESUME.pdf" download>
+                    Resume
+                  </a>
                 </Button>
               </div>
             </motion.div>
@@ -165,5 +169,5 @@ export function Navigation() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

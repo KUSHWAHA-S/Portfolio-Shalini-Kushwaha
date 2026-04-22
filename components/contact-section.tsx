@@ -10,8 +10,10 @@ export function ContactSection() {
   const ref = useRef(null)
   const containerRef = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const gmailComposeUrl =
-    "https://mail.google.com/mail/?view=cm&fs=1&to=k29120shalini%40gmail.com"
+  const email = "k29120shalini@gmail.com"
+  const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(
+    "Hello Shalini",
+  )}&body=${encodeURIComponent("Hi Shalini,%0D%0A%0D%0A")}`
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -21,7 +23,7 @@ export function ContactSection() {
   const backgroundRotate = useTransform(scrollYProgress, [0, 1], [0, 360])
   
   return (
-    <section id="contact" className="py-24 md:py-32 relative overflow-hidden" ref={containerRef}>
+    <section className="py-24 md:py-32 relative overflow-hidden" ref={containerRef}>
       {/* Animated background circles */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
@@ -120,9 +122,7 @@ export function ContactSection() {
               asChild
             >
               <a
-                href={gmailComposeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={mailtoHref}
                 className="flex items-center gap-3"
               >
                 <motion.span

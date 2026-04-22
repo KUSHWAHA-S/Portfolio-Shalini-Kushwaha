@@ -1,35 +1,47 @@
 # Portfolio
 
-This is a personal portfolio site built with Next.js (App Router). It’s a single-page layout with a 3D hero scene (Three.js) and smooth animations (Framer Motion), all styled with Tailwind CSS. The page is split into clear sections: **Hero**, **About**, **Skills**, **Experience**, **Projects**, and **Contact**.
+My personal portfolio site — built with Next.js (App Router), Tailwind CSS, Framer Motion, and a small Three.js scene in the hero.
 
-## What’s inside
+## Live website
 
-The homepage is assembled in `app/page.tsx` using these components:
+You can view it here: `https://portfolio-shalini-kushwaha.vercel.app/`
 
-- `components/navigation.tsx` - top navigation + theme toggle
-- `components/hero-section.tsx` (+ `components/hero-scene.tsx`) - hero + 3D scene
-- `components/about-section.tsx` - about section (motion + illustration)
-- `components/skills-section.tsx` - skills cards + the skills route/arrow overlay
-- `components/experience-section.tsx` - experience section with tabs
-- `components/projects-section.tsx` - featured project cards (images from `public/`)
-- `components/contact-section.tsx` - contact CTA (email links)
-- `components/footer.tsx` - footer
+##👀
 
-## Run it locally
+Your portfolio should look like **you**, not like “Shalini, but with a different name” 😎.
 
-1. Install dependencies:
+## Quick start
 
-   ```bash
-   npm install
-   ```
+Install dependencies and start the dev server:
 
-2. Start the dev server:
+```bash
+npm install
+npm run dev
+```
 
-   ```bash
-   npm run dev
-   ```
+Then open `http://localhost:3000`.
 
-Then open: `http://localhost:3000`
+## Structure (high level)
+
+- **Page composition**: `app/page.tsx`
+- **Global styles + theme tokens**: `app/globals.css`
+- **Main sections**: `components/*-section.tsx`
+- **Static assets**: `public/` (project thumbnails, SVGs)
+
+## Resume download
+
+Drop your resume PDF into `public/` as `resume.pdf`. The navbar “Resume” button links to `/resume.pdf` with the `download` attribute.
+
+## How the project works (developer notes)
+
+- **Routing / page**: This is a single-page layout rendered from `app/page.tsx`, composed of section components (hero, about, skills, experience, projects, contact).
+- **Theme**: Light/dark mode is handled with `next-themes`. Color tokens live in `app/globals.css` and the UI uses semantic CSS variables (so the theme swaps without rewriting component styles).
+- **Animations**:
+  - Framer Motion is used for section reveals and micro-interactions.
+  - Heavier visuals are gated to desktop and respect `prefers-reduced-motion`.
+- **Performance choices**:
+  - Below-the-fold sections are mounted lazily to reduce initial JS work.
+  - Images are served through Next’s image optimization (thumbnails live in `public/`).
 
 ## Build for production
 
@@ -38,24 +50,10 @@ npm run build
 npm run start
 ```
 
-## Tech used
+## Notes
 
-- Next.js + React + TypeScript
-- Tailwind CSS (from `app/globals.css`)
-- Framer Motion (scroll/hover animations)
-- `next-themes` (light/dark mode)
-- Three.js (`@react-three/fiber`, `@react-three/drei`)
-- Icons: `lucide-react`
-
-## Styling, theme, and fonts
-
-- Light/dark theme tokens live in `app/globals.css` (`:root` for light, `.dark` for dark).
-- The theme toggle is wired up in `app/layout.tsx` using `next-themes`.
-- Fonts are loaded with `next/font/google` (including `Mrs Saint Delafield` for the navbar name).
-
-## Assets
-
-Most images live in `public/` and are referenced directly by components (for example, project thumbnails in `components/projects-section.tsx`).
+- **Theme**: Light/dark tokens are in `app/globals.css` (`:root` and `.dark`)
+- **Fonts**: Loaded via `next/font/google` in `app/layout.tsx` (logo font: `Mrs Saint Delafield`)
 
 ## License
 

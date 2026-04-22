@@ -2,7 +2,7 @@
 
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, Sparkles } from "lucide-react"
 import Image from "next/image"
 
 const featuredProjects = [
@@ -25,7 +25,7 @@ const featuredProjects = [
     image: "/motionfolio-thumbnail.jpg",
   },
   {
-    title: "Bus Booking Web App",
+    title: "BookBus",
     description:
       "A modern bus booking experience focused on fast search, seat selection, and smooth checkout flows, with clear route details and user-friendly trip management across devices.",
     technologies: ["Next.js", "React", "TypeScript", "Booking Flow", "UX"],
@@ -208,24 +208,25 @@ export function ProjectsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   
   return (
-    <section id="projects" className="py-24 md:py-32">
+    <section className="py-24 md:py-32">
       <div className="mx-auto w-full max-w-5xl px-6" ref={ref}>
         {/* Header - zooms in with rotation (different from Experience) */}
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
           animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
           transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
           className="flex items-center gap-4 text-2xl md:text-3xl font-bold mb-12 text-foreground"
         >
           Some Things I&apos;ve Built
-          <motion.span 
+          <Sparkles className="h-5 w-5 text-primary" />
+          <motion.span
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 1, delay: 0.4 }}
-            className="flex-1 h-px bg-border ml-4 max-w-xs origin-center" 
+            className="flex-1 h-px bg-border ml-4 max-w-xs origin-center"
           />
         </motion.h2>
-        
+
         {/* Featured Projects */}
         <div className="space-y-32 mb-32">
           {featuredProjects.map((project, index) => (
@@ -239,5 +240,5 @@ export function ProjectsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

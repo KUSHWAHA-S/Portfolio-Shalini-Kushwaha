@@ -4,19 +4,25 @@ import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-const geistSans = Geist({ 
+const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-geist-sans",
+  display: "swap",
+  preload: true,
 })
-const geistMono = Geist_Mono({ 
+const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
+  display: "swap",
+  preload: false,
 })
 
 const mrsSaintDelafield = Mrs_Saint_Delafield({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-mrs-saint-delafield",
+  display: "swap",
+  preload: false,
 })
 
 export const metadata: Metadata = {

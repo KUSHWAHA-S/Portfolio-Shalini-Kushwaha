@@ -356,8 +356,10 @@ function CartoonAvatar() {
 }
 
 export function HeroSection() {
-  const gmailComposeUrl =
-    "https://mail.google.com/mail/?view=cm&fs=1&to=k29120shalini%40gmail.com"
+  const email = "k29120shalini@gmail.com"
+  const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(
+    "Hello Shalini",
+  )}&body=${encodeURIComponent("Hi Shalini,%0D%0A%0D%0A")}`
   const fullSurname = "Kushwaha"
   const [displaySurname, setDisplaySurname] = useState("K")
   const [isSurnameHovered, setIsSurnameHovered] = useState(false)
@@ -451,24 +453,35 @@ export function HeroSection() {
                     </motion.span>
                   ))
                 : "Shalini"}
-              <span>{"\u00A0"}</span>
-              <motion.span
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, type: "spring" }}
-                className="relative inline-block w-[2ch] cursor-default"
-              >
-                <span
-                  className={`transition-opacity duration-150 ${
-                    isSurnameHovered ? "opacity-0" : "opacity-100"
-                  }`}
-                >
-                  K.
+              {isDesktop ? (
+                <>
+                  <span>{"\u00A0"}</span>
+                  <motion.span
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, type: "spring" }}
+                    className="relative inline-block w-[2ch] cursor-default"
+                  >
+                    <span
+                      className={`transition-opacity duration-150 ${
+                        isSurnameHovered ? "opacity-0" : "opacity-100"
+                      }`}
+                    >
+                      K.
+                    </span>
+                    {isSurnameHovered ? (
+                      <span className="absolute left-0 top-0 whitespace-nowrap pointer-events-none">
+                        {displaySurname}.
+                      </span>
+                    ) : null}
+                  </motion.span>
+                </>
+              ) : (
+                <span className="block sm:inline">
+                  <span className="hidden sm:inline">{"\u00A0"}</span>
+                  Kushwaha.
                 </span>
-                <span className="absolute left-0 top-0 whitespace-nowrap pointer-events-none">
-                  {displaySurname}.
-                </span>
-              </motion.span>
+              )}
             </motion.h1>
 
             <motion.h2
@@ -525,9 +538,7 @@ export function HeroSection() {
                 asChild
               >
                 <motion.a
-                  href={gmailComposeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={mailtoHref}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

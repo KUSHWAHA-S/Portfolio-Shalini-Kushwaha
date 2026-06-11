@@ -88,7 +88,7 @@ export function Navigation() {
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                 asChild
               >
-                <a href="/SHALINI_KUSHWAHA_RESUME.pdf" download>
+                <a href="/Shalini_Kushwaha_Resume.pdf" download>
                   Resume
                 </a>
               </Button>
@@ -159,7 +159,7 @@ export function Navigation() {
                   className="border-primary text-primary hover:bg-primary hover:text-primary-foreground mt-4"
                   asChild
                 >
-                  <a href="/SHALINI_KUSHWAHA_RESUME.pdf" download>
+                  <a href="/Shalini_Kushwaha_Resume.pdf" download>
                     Resume
                   </a>
                 </Button>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Mrs_Saint_Delafield } from 'next/font/google'
+import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
@@ -82,6 +83,11 @@ export default function RootLayout({
           {children}
           <Analytics />
         </ThemeProvider>
+        <Script
+          src="https://cognition-ui.vercel.app/sdk.js"
+          data-id="1d22169f-1c42-4062-b3ba-c6b439a73753"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )

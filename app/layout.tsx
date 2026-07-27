@@ -84,11 +84,8 @@ export default function RootLayout({
           <Analytics />
         </ThemeProvider>
         <Script
-          src="https://cognition-ui.vercel.app/sdk.js"
-          data-id="1d22169f-1c42-4062-b3ba-c6b439a73753"
-          strategy="afterInteractive"
-        />
-      </body>
+          src="https://cognition-ui.vercel.app/sdk.js" data-id="edc35c52-27b6-43c2-977f-9daf3abb4dc5" defer
+        /></body>
     </html>
   )
 }

@@ -7,12 +7,12 @@ import Image from "next/image"
 
 const featuredProjects = [
   {
-    title: "Journey Intent Tracker",
+    title: "Cognition UI",
     description:
       "A behavior analytics tracker that not only shows what a user did, but also infers possible intent by analyzing their journey, key stops, and interaction patterns across the product.",
     technologies: ["Next.js", "TypeScript", "Analytics", "User Journeys", "Insights"],
     github: "#",
-    external: "#",
+    external: "https://cognition-ui.vercel.app/",
     image: "/tracker-thumbnail.jpg",
   },
   {
@@ -21,7 +21,7 @@ const featuredProjects = [
       "A multi-tenant portfolio platform where a single Next.js frontend dynamically renders multiple user portfolios from configuration, routing rules, and publish or unpublish states.",
     technologies: ["Next.js", "TypeScript", "SEO", "Routing", "Config-driven UI"],
     github: "#",
-    external: "https://motionfolio-btpz.vercel.app/portfolio/new",
+    external: "https://motionfolio-btpz.vercel.app",
     image: "/motionfolio-thumbnail.jpg",
   },
   {

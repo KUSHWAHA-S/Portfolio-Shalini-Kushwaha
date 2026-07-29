@@ -500,7 +500,7 @@ export function HeroSection() {
               className="text-muted-foreground text-lg max-w-xl mb-8 leading-relaxed"
             >
               Crafting high-quality frontend experiences at the intersection of
-              performance, scalability, and design. With nearly 4 years of
+              performance, scalability, and design. With 4 years of
               experience, I build modern web and mobile applications that are
               fast, accessible, and thoughtfully engineered.
             </motion.p>

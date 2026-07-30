@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, Sparkles, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -80,6 +81,18 @@ export function Navigation() {
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.1 }}
+            >
+              <Link
+                href="/dsa-school"
+                className="text-muted-foreground hover:text-primary transition-colors text-sm tracking-wide"
+              >
+                DSA School
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
               <Button
@@ -154,6 +167,19 @@ export function Navigation() {
                     {link.name}
                   </motion.a>
                 ))}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navLinks.length * 0.1 }}
+                >
+                  <Link
+                    href="/dsa-school"
+                    className="text-foreground hover:text-primary transition-colors text-lg"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    DSA School
+                  </Link>
+                </motion.div>
                 <Button
                   variant="outline"
                   className="border-primary text-primary hover:bg-primary hover:text-primary-foreground mt-4"

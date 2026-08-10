@@ -16,6 +16,11 @@ export const topics: Topic[] = [
     description: "Pattern matching, hashing, and common string techniques.",
   },
   {
+    slug: "hashing",
+    title: "Hashing",
+    description: "Frequency maps, lookup maps, and hash-based problem-solving patterns.",
+  },
+  {
     slug: "linked-list",
     title: "Linked Lists",
     description: "Singly/doubly linked lists, fast & slow pointers, reversal.",

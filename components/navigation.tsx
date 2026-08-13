@@ -84,10 +84,10 @@ export function Navigation() {
               transition={{ delay: navLinks.length * 0.1 }}
             >
               <Link
-                href="/dsa-school"
+                href="/coding-school"
                 className="text-muted-foreground hover:text-primary transition-colors text-sm tracking-wide"
               >
-                DSA School
+                Coding School
               </Link>
             </motion.div>
             <motion.div
@@ -173,11 +173,11 @@ export function Navigation() {
                   transition={{ delay: navLinks.length * 0.1 }}
                 >
                   <Link
-                    href="/dsa-school"
+                    href="/coding-school"
                     className="text-foreground hover:text-primary transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    DSA School
+                    Coding School
                   </Link>
                 </motion.div>
                 <Button

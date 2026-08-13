@@ -90,7 +90,7 @@ const components: Components = {
   ),
 }
 
-export function DsaMarkdown({ content }: { content: string }) {
+export function NoteMarkdown({ content }: { content: string }) {
   return (
     <div>
       <ReactMarkdown

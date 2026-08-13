@@ -12,15 +12,20 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import type { DaySummary } from "@/lib/dsa-school"
+import type { DaySummary } from "@/lib/coding-school"
+import type { Mode } from "@/content/coding-school/subjects"
 
-export function DsaSidebar({
-  topicSlug,
-  topicTitle,
+export function CategorySidebar({
+  subjectSlug,
+  categorySlug,
+  categoryTitle,
+  mode,
   days,
 }: {
-  topicSlug: string
-  topicTitle: string
+  subjectSlug: string
+  categorySlug: string
+  categoryTitle: string
+  mode: Mode
   days: DaySummary[]
 }) {
   const pathname = usePathname()
@@ -29,7 +34,7 @@ export function DsaSidebar({
     <Sidebar collapsible="offcanvas" className="top-14">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>{topicTitle}</SidebarGroupLabel>
+          <SidebarGroupLabel>{categoryTitle}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {days.length === 0 && (
@@ -40,11 +45,13 @@ export function DsaSidebar({
                 </SidebarMenuItem>
               )}
               {days.map((day) => {
-                const href = `/dsa-school/${topicSlug}/${day.day}`
+                const href = `/coding-school/${subjectSlug}/${categorySlug}/${day.day}`
                 return (
                   <SidebarMenuItem key={day.day}>
                     <SidebarMenuButton asChild isActive={pathname === href}>
-                      <Link href={href}>Day {day.day}</Link>
+                      <Link href={href}>
+                        {mode === "pattern" ? day.title : `Day ${day.day}`}
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 )

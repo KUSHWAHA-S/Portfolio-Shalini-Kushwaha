@@ -37,34 +37,14 @@ export const subjects: Subject[] = [
         description: "Frequency maps and lookup maps for O(1) recall.",
       },
       {
-        slug: "fast-slow-pointers",
-        title: "Fast & Slow Pointers",
-        description: "Cycle detection and middle-finding on linked structures.",
-      },
-      {
-        slug: "binary-search",
-        title: "Binary Search (Modified)",
-        description: "Searching sorted or monotonic search spaces.",
+        slug: "prefix-sum",
+        title: "Prefix Sum",
+        description: "Cumulative sums and remainder tracking for subarray problems.",
       },
       {
         slug: "monotonic-stack",
         title: "Monotonic Stack",
         description: "Maintaining an ordered stack for next-greater/smaller problems.",
-      },
-      {
-        slug: "tree-graph-traversal",
-        title: "Tree & Graph Traversal",
-        description: "BFS and DFS across trees and graphs.",
-      },
-      {
-        slug: "backtracking",
-        title: "Backtracking",
-        description: "Recursive exploration with pruning.",
-      },
-      {
-        slug: "dynamic-programming",
-        title: "Dynamic Programming",
-        description: "Memoization, tabulation, and classic DP patterns.",
       },
     ],
   },
@@ -78,6 +58,24 @@ export const subjects: Subject[] = [
         slug: "core-concepts",
         title: "Core Concepts",
         description: "Execution context, closures, prototypes, async, and the fundamentals interviewers probe.",
+      },
+    ],
+  },
+  {
+    slug: "networking",
+    title: "Networking",
+    description: "Web protocols, authentication, and how browsers and servers actually talk to each other.",
+    mode: "day",
+    categories: [
+      {
+        slug: "authentication",
+        title: "Authentication",
+        description: "Sessions, cookies, tokens, and how browsers actually authenticate requests.",
+      },
+      {
+        slug: "http-fundamentals",
+        title: "HTTP Fundamentals",
+        description: "Status codes, statelessness, HTTP vs HTTPS, and the full request/response journey.",
       },
     ],
   },

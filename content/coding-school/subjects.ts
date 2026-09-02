@@ -77,6 +77,16 @@ export const subjects: Subject[] = [
         title: "HTTP Fundamentals",
         description: "Status codes, statelessness, HTTP vs HTTPS, and the full request/response journey.",
       },
+      {
+        slug: "cors",
+        title: "CORS & Same-Origin Policy",
+        description: "Why browsers restrict cross-origin requests, and how CORS headers grant permission.",
+      },
+      {
+        slug: "frontend-networking",
+        title: "Frontend Networking Patterns",
+        description: "Cancellation, retries, race conditions, and other client-side request-handling patterns.",
+      },
     ],
   },
 ]
